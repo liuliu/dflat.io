@@ -3,6 +3,7 @@ site_author: Liu Liu
 site_url: https://dflat.io
 repo_name: liuliu/dflat
 repo_url: https://github.com/liuliu/dflat
+edit_uri: ""
 theme:
   name: 'material'
   features:

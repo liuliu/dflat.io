@@ -1,0 +1,1006 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://dflat.io/reference/Workspace/">
+      
+      
+        <meta name="author" content="Liu Liu">
+      
+      <link rel="shortcut icon" href="../../favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+    
+    
+      
+        <title>Workspace - Dflat, Structured Data Store for Mobile</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a46bcfb3.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#queryable" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://dflat.io" title="Dflat, Structured Data Store for Mobile" class="md-header-nav__button md-logo" aria-label="Dflat, Structured Data Store for Mobile">
+      
+  <img src="../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Dflat, Structured Data Store for Mobile
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Workspace
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/liuliu/dflat/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    liuliu/dflat
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../runtime-api/" class="md-tabs__link md-tabs__link--active">
+          API Reference
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://dflat.io" title="Dflat, Structured Data Store for Mobile" class="md-nav__button md-logo" aria-label="Dflat, Structured Data Store for Mobile">
+      
+  <img src="../../images/logo.svg" alt="logo">
+
+    </a>
+    Dflat, Structured Data Store for Mobile
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/liuliu/dflat/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    liuliu/dflat
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../runtime-api/" title="API Reference / Runtime API" class="md-nav__link">
+      API Reference / Runtime API
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      API Reference
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../runtime-api/" title="Runtime API" class="md-nav__link">
+      Runtime API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Workspace
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Workspace" class="md-nav__link md-nav__link--active">
+      Workspace
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetchfor_" class="md-nav__link">
+    fetchFor(_:)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetchwithinasnapshot_" class="md-nav__link">
+    fetchWithinASnapshot(_:)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../TransactionContext/" title="TransactionContext" class="md-nav__link">
+      TransactionContext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../SQLiteWorkspace/" title="SQLiteWorkspace" class="md-nav__link">
+      SQLiteWorkspace
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../schema/" title="Schema Evolution" class="md-nav__link">
+      Schema Evolution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../namespace/" title="Namespace" class="md-nav__link">
+      Namespace
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../benchmark/" title="Benchmark" class="md-nav__link">
+      Benchmark
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetchfor_" class="md-nav__link">
+    fetchFor(_:)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetchwithinasnapshot_" class="md-nav__link">
+    fetchWithinASnapshot(_:)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/liuliu/dflat/edit/master/docs/reference/Workspace.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <p><strong>PROTOCOL</strong></p>
+<h1 id="queryable"><code>Queryable</code><a class="headerlink" href="#queryable" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="nc">Queryable</span>
+</code></pre></div>
+
+
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
+<h3 id="fetchfor_"><code>fetchFor(_:)</code><a class="headerlink" href="#fetchfor_" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">fetchFor</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">ofType</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Return a QueryBuilder that you can make <code>where</code> or <code>all</code> queries against.</p>
+<h3 id="fetchwithinasnapshot_"><code>fetchWithinASnapshot(_:)</code><a class="headerlink" href="#fetchwithinasnapshot_" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">fetchWithinASnapshot</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">T</span>
+</code></pre></div>
+
+
+<p>Provide a consistent view for fetching multiple objects at once.</p>
+<p><strong>PROTOCOL</strong></p>
+<h1 id="workspace"><code>Workspace</code><a class="headerlink" href="#workspace" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="nc">Workspace</span><span class="p">:</span> <span class="n">Queryable</span>
+</code></pre></div>
+
+
+<h2 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h2>
+<h3 id="shutdowncompletion"><code>shutdown(completion:)</code><a class="headerlink" href="#shutdowncompletion" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">shutdown</span><span class="p">(</span><span class="n">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)?)</span>
+</code></pre></div>
+
+
+<p>Shutdown the Workspace. All transactions made to Dflat after this call will fail.
+Transactions initiated before this will finish normally. Data fetching after this
+will return empty results. Any data fetching triggered before this call will finish
+normally, hence the <code>completion</code> part. The <code>completion</code> closure, if supplied, will
+be called once all transactions and data fetching initiated before shutdown finish.</p>
+<h3 id="performchanges_changeshandlercompletionhandler"><code>performChanges(_:changesHandler:completionHandler:)</code><a class="headerlink" href="#performchanges_changeshandlercompletionhandler" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span><span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span><span class="p">,</span> <span class="n">completionHandler</span><span class="p">:</span> <span class="n">CompletionHandler</span><span class="p">?)</span>
+</code></pre></div>
+
+
+<p>Perform a transaction for given object types.</p>
+<ul>
+<li>Parameters:<ul>
+<li>transactionalObjectTypes: A list of object types you are going to transact with. If you
+                            If you fetch or mutation an object outside of this list, it will fatal.</li>
+<li>changesHandler: The transaction closure where you will give a transactionContext and safe to do
+                  data mutations through submission of change requests.</li>
+<li>completionHandler: If supplied, will be called once the transaction committed. It will be called
+                     with success / failure. You don't need to handle failure cases specifically
+                     (such as retry), but rather to surface and log such error.</li>
+</ul>
+</li>
+</ul>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transactionalObjectTypes</td>
+<td>A list of object types you are going to transact with. If you If you fetch or mutation an object outside of this list, it will fatal.</td>
+</tr>
+<tr>
+<td>changesHandler</td>
+<td>The transaction closure where you will give a transactionContext and safe to do data mutations through submission of change requests.</td>
+</tr>
+<tr>
+<td>completionHandler</td>
+<td>If supplied, will be called once the transaction committed. It will be called with success / failure. You don’t need to handle failure cases specifically (such as retry), but rather to surface and log such error.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="subscribefetchedresultchangehandler"><code>subscribe(fetchedResult:changeHandler:)</code><a class="headerlink" href="#subscribefetchedresultchangehandler" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span> <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Subscription</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+</code></pre></div>
+
+
+<p>Subscribe to changes of a fetched result. You queries fetched result with
+ <code>fetchFor().where()</code> method and the result can be observed. If any object
+ created / updated meet the query criterion, the callback will happen and you
+ will get a updated fetched result.</p>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>fetchedResult: The original fetchedResult. If it is outdated already, you will get an updated
+                 callback soon after.</li>
+<li>changeHandler: The callback where you will receive an update if anything changed.</li>
+</ul>
+</li>
+<li>
+<p>Returns: A subscription object that you can cancel the subscription. If no one hold the subscription
+            object, it will cancel automatically.</p>
+</li>
+</ul>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fetchedResult</td>
+<td>The original fetchedResult. If it is outdated already, you will get an updated callback soon after.</td>
+</tr>
+<tr>
+<td>changeHandler</td>
+<td>The callback where you will receive an update if anything changed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="subscribeobjectchangehandler"><code>subscribe(object:changeHandler:)</code><a class="headerlink" href="#subscribeobjectchangehandler" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">SubscribedObject</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Subscription</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+</code></pre></div>
+
+
+<p>Subscribe to changes of an object. If anything in the object changed or
+ the object itself is deleted. Deletion is a terminal event for subscription.
+ Even if later you inserted an object with the same primary key, the subscription
+ callback won't be triggered. This is different from fetched result subscription
+ above where if you query by primary key, you will get subscription update if
+ a new object with the same primary key later created.</p>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>object: The object to be observed. If it is outdated already, you will get an updated callback
+          soon after.</li>
+<li>changeHandler: The callback where you will receive an update if anything changed.</li>
+</ul>
+</li>
+<li>
+<p>Returns: A subscription object that you can cancel on. If no one hold the subscription, it will cancel
+            automatically.</p>
+</li>
+</ul>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>The object to be observed. If it is outdated already, you will get an updated callback soon after.</td>
+</tr>
+<tr>
+<td>changeHandler</td>
+<td>The callback where you will receive an update if anything changed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="publisherfor"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AtomPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+</code></pre></div>
+
+
+<p>Return a publisher for object subscription in Combine.</p>
+<h3 id="publisherfor_1"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">FetchedResultPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+</code></pre></div>
+
+
+<p>Return a publisher for fetched result subscription in Combine.</p>
+<h3 id="publisherfor_2"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor_2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryPublisherBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+</code></pre></div>
+
+
+<p>Return a publisher builder for query subscription in Combine.</p>
+<p><strong>CLASS</strong></p>
+<h1 id="querybuilder"><code>QueryBuilder</code><a class="headerlink" href="#querybuilder" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">class</span> <span class="nc">QueryBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<h2 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h2>
+<h3 id="init"><code>init()</code><a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">init</span><span class="p">()</span>
+</code></pre></div>
+
+
+<h3 id="where_limitorderby"><code>where(_:limit:orderBy:)</code><a class="headerlink" href="#where_limitorderby" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">func</span> <span class="p">`</span><span class="k">where</span><span class="p">`&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Expr</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">query</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="n">Limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span><span class="p">:</span> <span class="p">[</span><span class="n">OrderBy</span><span class="p">]</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">T</span><span class="p">.</span><span class="n">ResultType</span> <span class="p">==</span> <span class="nb">Bool</span>
+</code></pre></div>
+
+
+<p>Make query against the Workspace. This is coupled with <code>fetchFor()</code> method and shouldn't be used independently.</p>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>query: The query such as <code>Post.title == "some title" &amp;&amp; Post.color == .red</code></li>
+<li>limit: The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></li>
+<li>orderBy: The array of keys to order the result. Such as <code>[Post.priority.descending]</code></li>
+</ul>
+</li>
+<li>
+<p>Returns: Return a fetched result which interacts just like normal array.</p>
+</li>
+</ul>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>The query such as <code>Post.title == "some title" &amp;&amp; Post.color == .red</code></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>The array of keys to order the result. Such as <code>[Post.priority.descending]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="alllimitorderby"><code>all(limit:orderBy:)</code><a class="headerlink" href="#alllimitorderby" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">all</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span> <span class="n">Limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span><span class="p">:</span> <span class="p">[</span><span class="n">OrderBy</span><span class="p">]</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Return all objects for a class.</p>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>limit: The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></li>
+<li>orderBy: The array of keys to order the result. Such as <code>[Post.priority.descending]</code></li>
+</ul>
+</li>
+<li>
+<p>Returns: Return a fetched result which interacts just like normal array.</p>
+</li>
+</ul>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limit</td>
+<td>The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>The array of keys to order the result. Such as <code>[Post.priority.descending]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>PROTOCOL</strong></p>
+<h1 id="workspacesubscription"><code>WorkspaceSubscription</code><a class="headerlink" href="#workspacesubscription" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="nc">WorkspaceSubscription</span>
+</code></pre></div>
+
+
+<h2 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h2>
+<h3 id="cancel"><code>cancel()</code><a class="headerlink" href="#cancel" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">cancel</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>Cancel an existing subscription. It is guaranteed that no callback will happen
+immediately after <code>cancel</code>.</p>
+<p><strong>ENUM</strong></p>
+<h1 id="subscribedobject"><code>SubscribedObject</code><a class="headerlink" href="#subscribedobject" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">SubscribedObject</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<h2 id="cases">Cases<a class="headerlink" href="#cases" title="Permanent link">&para;</a></h2>
+<h3 id="updated_"><code>updated(_:)</code><a class="headerlink" href="#updated_" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">case</span> <span class="n">updated</span><span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Giving the updated object.</p>
+<h3 id="deleted"><code>deleted</code><a class="headerlink" href="#deleted" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">case</span> <span class="n">deleted</span>
+</code></pre></div>
+
+
+<p>The object is deleted. This denotes the end of a subscription.</p>
+<p><strong>CLASS</strong></p>
+<h1 id="querypublisherbuilder"><code>QueryPublisherBuilder</code><a class="headerlink" href="#querypublisherbuilder" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">class</span> <span class="nc">QueryPublisherBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+</code></pre></div>
+
+
+<h2 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h2>
+<h3 id="init_1"><code>init()</code><a class="headerlink" href="#init_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">init</span><span class="p">()</span>
+</code></pre></div>
+
+
+<h3 id="where_limitorderby_1"><code>where(_:limit:orderBy:)</code><a class="headerlink" href="#where_limitorderby_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">func</span> <span class="p">`</span><span class="k">where</span><span class="p">`&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Expr</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">query</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="n">Limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span><span class="p">:</span> <span class="p">[</span><span class="n">OrderBy</span><span class="p">]</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">QueryPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">T</span><span class="p">.</span><span class="n">ResultType</span> <span class="p">==</span> <span class="nb">Bool</span>
+</code></pre></div>
+
+
+<p>Subscribe to a query against the Workspace. This is coupled with <code>publisher(for: Element.self)</code> method
+ and shouldn't be used independently.</p>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>query: The query such as <code>Post.title == "some title" &amp;&amp; Post.color == .red</code></li>
+<li>limit: The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></li>
+<li>orderBy: The array of keys to order the result. Such as <code>[Post.priority.descending]</code></li>
+</ul>
+</li>
+<li>
+<p>Returns: A publisher object that can be interacted with Combine.</p>
+</li>
+</ul>
+<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>The query such as <code>Post.title == "some title" &amp;&amp; Post.color == .red</code></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>The array of keys to order the result. Such as <code>[Post.priority.descending]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="alllimitorderby_1"><code>all(limit:orderBy:)</code><a class="headerlink" href="#alllimitorderby_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">all</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span> <span class="n">Limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span><span class="p">:</span> <span class="p">[</span><span class="n">OrderBy</span><span class="p">]</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">QueryPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>Subscribe to all changes to a class. This is coupled with <code>publisher(for: Element.self)</code> method
+ and shouldn't be used independently.</p>
+<ul>
+<li>Parameters:</li>
+<li>limit: The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></li>
+<li>
+<p>orderBy: The array of keys to order the result. Such as <code>[Post.priority.descending]</code></p>
+</li>
+<li>
+<p>Returns: A publisher object that can be interacted with Combine.</p>
+</li>
+</ul>
+<h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limit</td>
+<td>The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>The array of keys to order the result. Such as <code>[Post.priority.descending]</code></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../runtime-api/" title="Runtime API" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Runtime API
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../TransactionContext/" title="TransactionContext" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                TransactionContext
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/liuliu" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 004 2.98 8.521 8.521 0 01-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

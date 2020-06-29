@@ -1,0 +1,37 @@
+site_name: 'Dflat, Structured Data Store for Mobile'
+site_author: Liu Liu
+site_url: https://dflat.io
+repo_name: liuliu/dflat
+repo_url: https://github.com/liuliu/dflat
+theme:
+  name: 'material'
+  features:
+    - tabs
+  palette:
+    primary: 'deep purple'
+    accent: 'amber'
+  logo: 'images/logo.svg'
+  favicon: 'favicon.png'
+markdown_extensions:
+  - admonition
+  - meta
+  - codehilite
+  - toc:
+      permalink: true
+extra:
+  social:
+    - type: 'twitter'
+      link: 'https://twitter.com/liuliu'
+      icon: 'material/twitter'
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - API Reference / Runtime API: runtime-api.md
+  - API Reference:
+    - runtime-api.md
+    - reference/Workspace.md
+    - reference/TransactionContext.md
+    - reference/SQLiteWorkspace.md
+  - Schema Evolution: schema.md
+  - Namespace: namespace.md
+  - Benchmark: benchmark.md

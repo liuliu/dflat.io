@@ -1,0 +1,669 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://dflat.io/runtime-api/">
+      
+      
+        <meta name="author" content="Liu Liu">
+      
+      <link rel="shortcut icon" href="../favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+    
+    
+      
+        <title>Runtime API - Dflat, Structured Data Store for Mobile</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fe0cca5b.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a46bcfb3.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#runtime-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://dflat.io" title="Dflat, Structured Data Store for Mobile" class="md-header-nav__button md-logo" aria-label="Dflat, Structured Data Store for Mobile">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Dflat, Structured Data Store for Mobile
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Runtime API
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/liuliu/dflat/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    liuliu/dflat
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          API Reference
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://dflat.io" title="Dflat, Structured Data Store for Mobile" class="md-nav__button md-logo" aria-label="Dflat, Structured Data Store for Mobile">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    Dflat, Structured Data Store for Mobile
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/liuliu/dflat/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    liuliu/dflat
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="./" title="API Reference / Runtime API" class="md-nav__link">
+      API Reference / Runtime API
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      API Reference
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Runtime API
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Runtime API" class="md-nav__link md-nav__link--active">
+      Runtime API
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transactions" class="md-nav__link">
+    Transactions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-fetching" class="md-nav__link">
+    Data Fetching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-subscription" class="md-nav__link">
+    Data Subscription
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    Close
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reference/Workspace/" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reference/TransactionContext/" title="TransactionContext" class="md-nav__link">
+      TransactionContext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../reference/SQLiteWorkspace/" title="SQLiteWorkspace" class="md-nav__link">
+      SQLiteWorkspace
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../schema/" title="Schema Evolution" class="md-nav__link">
+      Schema Evolution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../namespace/" title="Namespace" class="md-nav__link">
+      Namespace
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../benchmark/" title="Benchmark" class="md-nav__link">
+      Benchmark
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transactions" class="md-nav__link">
+    Transactions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-fetching" class="md-nav__link">
+    Data Fetching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-subscription" class="md-nav__link">
+    Data Subscription
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    Close
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/liuliu/dflat/edit/master/docs/runtime-api.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="runtime-api">Runtime API<a class="headerlink" href="#runtime-api" title="Permanent link">&para;</a></h1>
+<p><strong>Dflat</strong> runtime has very minimal API footprint. There are about 15 APIs in total from 2 objects.</p>
+<h2 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">performChanges</span><span class="p">(</span><span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span> <span class="n">transactionContext</span><span class="p">:</span> <span class="n">TransactionContext</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">,</span> <span class="n">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kc">_</span> <span class="n">success</span><span class="p">:</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)?</span> <span class="p">=</span> <span class="kc">nil</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The API takes a <code>changesHandler</code> closure, where you can perform transactions such as object creations, updates or deletions. These mutations are performed through <code>ChangeRequest</code> objects.</p>
+<p>The first parameter specifies relevant object you are going to transact with. If you read or update any objects that is not specified here, an assertion will be triggered.</p>
+<p>When the transaction is done, the <code>completionHandler</code> closure will be triggered, and it will let you know whether the transaction is successful or not.</p>
+<p>The transaction will be performed in a background thread, exactly which one shouldn't be your concern. Two different objects can have transactions performed concurrently, it follows strict serializable protocol in that case.</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">TransactionContext</span><span class="p">.</span><span class="n">submit</span><span class="p">(</span><span class="kc">_</span> <span class="n">changeRequest</span><span class="p">:</span> <span class="n">ChangeRequest</span><span class="p">)</span> <span class="kr">throws</span> <span class="p">-&gt;</span> <span class="n">UpdatedObject</span>
+<span class="kd">func</span> <span class="nf">TransactionContext</span><span class="p">.</span><span class="k">try</span><span class="p">(</span><span class="n">submit</span><span class="p">:</span> <span class="n">ChangeRequest</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">TransactionContext</span><span class="p">.</span><span class="n">abort</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
+</code></pre></div>
+
+
+<p>You can interact with <strong>Dflat</strong> with above APIs in a transaction. It handles data mutations through <code>submit</code>. Note that errors are possible. For example, if you created an object with the same primary key twice (you should use <code>upsertRequest</code> if this is expected). <code>try(submit:</code> method simplified the <code>try? submit</code> dance in case you don't want to know the returned value. It will fatal if there are conflict primary keys, otherwise will swallow other types of errors (such as disk full). When encountered any other types of errors, <strong>Dflat</strong> will simply fail the whole transaction. <code>abort</code> method will explicitly abort a transaction. All submissions before and after this call will have no effect.</p>
+<h2 id="data-fetching">Data Fetching<a class="headerlink" href="#data-fetching" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">fetchFor</span><span class="p">(</span><span class="kc">_</span> <span class="n">ofType</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">).</span><span class="k">where</span><span class="p">(</span><span class="n">ElementQuery</span><span class="p">,</span> <span class="n">limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+<span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">fetchFor</span><span class="p">(</span><span class="kc">_</span> <span class="n">ofType</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">).</span><span class="n">all</span><span class="p">(</span><span class="n">limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+<span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">fetchWithinASnapshot</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">T</span>
+</code></pre></div>
+
+
+<p>Data fetching happens synchronously. You can specify conditions in the <code>where</code> clause, such as <code>Post.title == "first post"</code> or <code>Post.priority &gt; 100 &amp;&amp; Post.color == .red</code>. The returned <code>FetchedResult&lt;Element&gt;</code> acts pretty much like an array. The object itself (<code>Element</code>) is immutable, thus, either the object or the <code>FetchedResult&lt;Element&gt;</code> is safe to pass around between threads.</p>
+<p><code>fetchWithinASnapshot</code> provides a consistent view if you are going to fetch multiple objects:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">dflat</span><span class="p">.</span><span class="n">fetchWithinASnapshot</span> <span class="p">{</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">firstPost</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Post</span><span class="p">&gt;,</span> <span class="n">highPriPosts</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Post</span><span class="p">&gt;)</span> <span class="k">in</span>
+  <span class="kd">let</span> <span class="nv">firstPost</span> <span class="p">=</span> <span class="n">dflat</span><span class="p">.</span><span class="n">fetchFor</span><span class="p">(</span><span class="n">Post</span><span class="p">.</span><span class="kc">self</span><span class="p">).</span><span class="k">where</span><span class="p">(</span><span class="n">Post</span><span class="p">.</span><span class="n">title</span> <span class="p">==</span> <span class="s">&quot;first post&quot;</span><span class="p">)</span>
+  <span class="kd">let</span> <span class="nv">highPriPosts</span> <span class="p">=</span> <span class="n">dflat</span><span class="p">.</span><span class="n">fetchFor</span><span class="p">(</span><span class="n">Post</span><span class="p">.</span><span class="kc">self</span><span class="p">).</span><span class="k">where</span><span class="p">(</span><span class="n">Post</span><span class="p">.</span><span class="n">priority</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">Post</span><span class="p">.</span><span class="n">color</span> <span class="p">==</span> <span class="p">.</span><span class="n">red</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">firstPost</span><span class="p">,</span> <span class="n">highPriPosts</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>This is needed because <strong>Dflat</strong> can do transactions in between fetch for <code>firstPost</code> and <code>highPriPosts</code>. The <code>fetchWithinASnapshot</code> won't stop that transaction, but will make sure it only observe the view from fetching for <code>firstPost</code>.</p>
+<h2 id="data-subscription">Data Subscription<a class="headerlink" href="#data-subscription" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span> <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Subscription</span>
+<span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">SubscribedObject</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Subscription</span>
+</code></pre></div>
+
+
+<p>The above are the native subscription APIs. It subscribes changes to either a <code>fetchedResult</code> or an object. For object, it will end when object deleted. The subscription is triggered before a <code>completionHandler</code> on a transaction triggered.</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AtomPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+<span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">FetchedResultPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+<span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">).</span><span class="k">where</span><span class="p">(</span><span class="n">ElementQuery</span><span class="p">,</span> <span class="n">limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">QueryPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+<span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">).</span><span class="n">all</span><span class="p">(</span><span class="n">limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">QueryPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>These are the <strong>Combine</strong> counter-parts. Besides subscribing to objects or <code>fetchedResult</code>, it can also subscribe to a query directly. What happens under the hood is the query will be made upon <code>subscribe</code> (hence, on whichever queue you provided if you did <code>subscribe(on:</code>), and subscribe the <code>fetchedResult</code> from then on.</p>
+<h2 id="close">Close<a class="headerlink" href="#close" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)?</span> <span class="p">=</span> <span class="kc">nil</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>This will trigger the <strong>Dflat</strong> shutdown. All transactions made to <strong>Dflat</strong> after this call will fail. Transactions initiated before this will finish normally. Data fetching after this will return empty results. Any data fetching triggered before this call will finish normally, hence the <code>completion</code> part. The <code>completion</code> closure, if supplied, will be called once all transactions and data fetching initiated before <code>shutdown</code> finish.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="./" title="API Reference / Runtime API" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                API Reference / Runtime API
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../reference/Workspace/" title="Workspace" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Workspace
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/liuliu" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 004 2.98 8.521 8.521 0 01-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

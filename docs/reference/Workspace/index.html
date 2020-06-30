@@ -891,10 +891,12 @@ immediately after <code>cancel</code>.</p>
 <p>Subscribe to all changes to a class. This is coupled with <code>publisher(for: Element.self)</code> method
  and shouldn't be used independently.</p>
 <ul>
-<li>Parameters:</li>
-<li>limit: The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></li>
 <li>
-<p>orderBy: The array of keys to order the result. Such as <code>[Post.priority.descending]</code></p>
+<p>Parameters:</p>
+<ul>
+<li>limit: The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></li>
+<li>orderBy: The array of keys to order the result. Such as <code>[Post.priority.descending]</code></li>
+</ul>
 </li>
 <li>
 <p>Returns: A publisher object that can be interacted with Combine.</p>

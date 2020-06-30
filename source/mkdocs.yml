@@ -33,6 +33,7 @@ nav:
     - reference/Workspace.md
     - reference/TransactionContext.md
     - reference/SQLiteWorkspace.md
+  - Trade Offs: notes/trade-offs.md
   - Technical Notes:
     - notes/trade-offs.md
     - notes/mwmr.md

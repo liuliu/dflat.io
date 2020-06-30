@@ -1,7 +1,7 @@
 
 Thanks **Wouter van Oortmerssen** for the flatbuffers serialization format, which introduced an excellent schema upgrade path.
 
-Thanks **Dr. Hipp** for SQLite implementation that enabled a reasonable foundational data persistent mechanism.
+Thanks **Dr. Hipp** for SQLite implementation that enabled a reasonable foundational data persistence mechanism.
 
 Thanks **Guillaume Lessard** for the SwiftAtomics implementation, it is a shame that Swift doesn't have a good atomic primitives and we have to guess.
 

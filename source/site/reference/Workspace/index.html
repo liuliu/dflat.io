@@ -353,8 +353,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fetchfor_" class="md-nav__link">
-    fetchFor(_:)
+  <a href="#fetchfor" class="md-nav__link">
+    fetch(for:)
   </a>
   
 </li>
@@ -489,8 +489,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fetchfor_" class="md-nav__link">
-    fetchFor(_:)
+  <a href="#fetchfor" class="md-nav__link">
+    fetch(for:)
   </a>
   
 </li>
@@ -530,8 +530,8 @@
 
 
 <h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
-<h3 id="fetchfor_"><code>fetchFor(_:)</code><a class="headerlink" href="#fetchfor_" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">fetchFor</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">ofType</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+<h3 id="fetchfor"><code>fetch(for:)</code><a class="headerlink" href="#fetchfor" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">fetch</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span> <span class="n">ofType</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
 
 
@@ -606,7 +606,7 @@ be called once all transactions and data fetching initiated before shutdown fini
 
 
 <p>Subscribe to changes of a fetched result. You queries fetched result with
- <code>fetchFor().where()</code> method and the result can be observed. If any object
+ <code>fetch(for:).where()</code> method and the result can be observed. If any object
  created / updated meet the query criterion, the callback will happen and you
  will get a updated fetched result.</p>
 <ul>
@@ -721,7 +721,7 @@ be called once all transactions and data fetching initiated before shutdown fini
 </code></pre></div>
 
 
-<p>Make query against the Workspace. This is coupled with <code>fetchFor()</code> method and shouldn't be used independently.</p>
+<p>Make query against the Workspace. This is coupled with <code>fetch(for:)</code> method and shouldn't be used independently.</p>
 <ul>
 <li>
 <p>Parameters:</p>

@@ -578,7 +578,7 @@
 
 
 <p>Read:</p>
-<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">posts</span> <span class="p">=</span> <span class="n">dflat</span><span class="p">.</span><span class="n">fetchFor</span><span class="p">(</span><span class="n">Post</span><span class="p">.</span><span class="kc">self</span><span class="p">).</span><span class="k">where</span><span class="p">(</span><span class="n">Post</span><span class="p">.</span><span class="n">title</span> <span class="p">==</span> <span class="s">&quot;first post&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">posts</span> <span class="p">=</span> <span class="n">dflat</span><span class="p">.</span><span class="n">fetch</span><span class="p">(</span><span class="k">for</span><span class="p">:</span> <span class="n">Post</span><span class="p">.</span><span class="kc">self</span><span class="p">).</span><span class="k">where</span><span class="p">(</span><span class="n">Post</span><span class="p">.</span><span class="n">title</span> <span class="p">==</span> <span class="s">&quot;first post&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 

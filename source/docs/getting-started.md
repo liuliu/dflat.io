@@ -99,7 +99,7 @@ dflat.performChanges([Post.self], changesHandler: { (txnContext) in
 Read:
 
 ```swift
-let posts = dflat.fetchFor(Post.self).where(Post.title == "first post")
+let posts = dflat.fetch(for: Post.self).where(Post.title == "first post")
 ```
 
 Update:

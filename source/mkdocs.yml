@@ -27,12 +27,17 @@ extra:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
-  - API Reference / Runtime API: runtime-api.md
+  - Runtime API: runtime-api.md
   - API Reference:
     - runtime-api.md
     - reference/Workspace.md
     - reference/TransactionContext.md
     - reference/SQLiteWorkspace.md
+  - Technical Notes:
+    - notes/trade-offs.md
+    - notes/mwmr.md
+    - notes/rowid.md
+    - notes/upgrade.md
   - Schema Evolution: schema.md
   - Namespace: namespace.md
   - Benchmark: benchmark.md

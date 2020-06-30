@@ -1,4 +1,4 @@
-site_name: 'Dflat, Structured Data Store for Mobile'
+site_name: '「Dflat」Structured Data Store for Mobile'
 site_author: Liu Liu
 site_url: https://dflat.io
 repo_name: liuliu/dflat
@@ -36,3 +36,4 @@ nav:
   - Schema Evolution: schema.md
   - Namespace: namespace.md
   - Benchmark: benchmark.md
+  - Acknowledgement: acknowledgement.md

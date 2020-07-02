@@ -703,7 +703,7 @@
 <p>When the transaction is done, the <code>completionHandler</code> closure will be triggered, and it will let you know whether the transaction is successful or not.</p>
 <p>The transaction will be performed in a background thread, exactly which one shouldn't be your concern. Two different objects can have transactions performed concurrently, it follows strict serializable protocol in that case.</p>
 <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">TransactionContext</span><span class="p">.</span><span class="n">submit</span><span class="p">(</span><span class="kc">_</span> <span class="n">changeRequest</span><span class="p">:</span> <span class="n">ChangeRequest</span><span class="p">)</span> <span class="kr">throws</span> <span class="p">-&gt;</span> <span class="n">UpdatedObject</span>
-<span class="kd">func</span> <span class="nf">TransactionContext</span><span class="p">.</span><span class="k">try</span><span class="p">(</span><span class="n">submit</span><span class="p">:</span> <span class="n">ChangeRequest</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">TransactionContext</span><span class="p">.</span><span class="k">try</span><span class="p">(</span><span class="n">submit</span><span class="p">:</span> <span class="n">ChangeRequest</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">UpdatedObject</span><span class="p">?</span>
 <span class="kd">func</span> <span class="nf">TransactionContext</span><span class="p">.</span><span class="n">abort</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
 </code></pre></div>
 

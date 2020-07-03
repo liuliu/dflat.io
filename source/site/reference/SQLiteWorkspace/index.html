@@ -423,6 +423,19 @@
     performChanges(_:changesHandler:completionHandler:)
   </a>
   
+    <nav class="md-nav" aria-label="performChanges(_:changesHandler:completionHandler:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -444,12 +457,38 @@
     subscribe(fetchedResult:changeHandler:)
   </a>
   
+    <nav class="md-nav" aria-label="subscribe(fetchedResult:changeHandler:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#subscribeobjectchangehandler" class="md-nav__link">
     subscribe(object:changeHandler:)
   </a>
+  
+    <nav class="md-nav" aria-label="subscribe(object:changeHandler:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -694,6 +733,19 @@
     performChanges(_:changesHandler:completionHandler:)
   </a>
   
+    <nav class="md-nav" aria-label="performChanges(_:changesHandler:completionHandler:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -715,12 +767,38 @@
     subscribe(fetchedResult:changeHandler:)
   </a>
   
+    <nav class="md-nav" aria-label="subscribe(fetchedResult:changeHandler:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#subscribeobjectchangehandler" class="md-nav__link">
     subscribe(object:changeHandler:)
   </a>
+  
+    <nav class="md-nav" aria-label="subscribe(object:changeHandler:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -831,6 +909,29 @@
 </code></pre></div>
 
 
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transactionalObjectTypes</td>
+<td>A list of object types you are going to transact with. If you If you fetch or mutation an object outside of this list, it will fatal.</td>
+</tr>
+<tr>
+<td>changesHandler</td>
+<td>The transaction closure where you will give a transactionContext and safe to do data mutations through submission of change requests.</td>
+</tr>
+<tr>
+<td>completionHandler</td>
+<td>If supplied, will be called once the transaction committed. It will be called with success / failure. You don’t need to handle failure cases specifically (such as retry), but rather to surface and log such error.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="fetchfor"><code>fetch(for:)</code><a class="headerlink" href="#fetchfor" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetch</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span> <span class="n">ofType</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -846,11 +947,49 @@
 </code></pre></div>
 
 
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fetchedResult</td>
+<td>The original fetchedResult. If it is outdated already, you will get an updated callback soon after.</td>
+</tr>
+<tr>
+<td>changeHandler</td>
+<td>The callback where you will receive an update if anything changed.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="subscribeobjectchangehandler"><code>subscribe(object:changeHandler:)</code><a class="headerlink" href="#subscribeobjectchangehandler" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">SubscribedObject</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Workspace</span><span class="p">.</span><span class="n">Subscription</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
 </code></pre></div>
 
 
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>The object to be observed. If it is outdated already, you will get an updated callback soon after.</td>
+</tr>
+<tr>
+<td>changeHandler</td>
+<td>The callback where you will receive an update if anything changed.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="publisherfor"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span> <span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AtomPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
 </code></pre></div>

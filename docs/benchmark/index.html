@@ -484,9 +484,49 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Benchmark
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
     <a href="./" title="Benchmark" class="md-nav__link md-nav__link--active">
       Benchmark
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    CRUD
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-subscription" class="md-nav__link">
+    Change Subscription
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -520,6 +560,30 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    CRUD
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-subscription" class="md-nav__link">
+    Change Subscription
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -535,6 +599,7 @@
                 
                 
                 <h1 id="benchmark">Benchmark<a class="headerlink" href="#benchmark" title="Permanent link">&para;</a></h1>
+<h2 id="crud">CRUD<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h2>
 <p>Benchmark on structured data persistence system is notoriously hard. <strong>Dflat</strong> won't claim to be fastest. However, it strives to be <em>predictable performant</em>. What that means is there shouldn't be any pathological cases that the performance of <strong>Dflat</strong> degrades unexpectedly. It also means <strong>Dflat</strong> won't be surprisingly fast for some optimal cases.</p>
 <p>Following data are collected, and can be reproduced from:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">./focus.py app:Benchmarks</span>
@@ -545,7 +610,7 @@
 <p>The test device is a iPhone 11 Pro with 64GB memory.</p>
 <p><strong>A Disclaimer</strong>: you should take a grain of salt for any benchmark numbers. These numbers I presented here simply to demonstrate some pathological cases for frameworks involved. It shouldn't be taken out of this context. In practice, structured data persistence systems rarely are the bottle-neck. It is more important to understand how you use it rather than what's the raw numbers in a light-workload device looks like.</p>
 <p>The code for <code>app:Benchmarks</code> was compiled in Release mode (<code>--compilation-mode=opt</code>) with <code>-whole-module-optimization</code> on. The WCDB Benchmark was compiled in Release mode whatever that means in their project file.</p>
-<p>The benchmark itself is preliminary. It represents the best case scenarios for these frameworks, and I'd like to update this benchmark later with more focus on update propagation.</p>
+<p>The benchmark itself is not peer-reviewed. In some cases, it represents the best case scenarios for these frameworks. In other cases, it represents the worst case scenarios. It is not designed to reflect real-world work-load. Rather, these benchmarks designed to reflect the framework's characteristics under extreme cases.</p>
 <p>First, we compared <strong>Dflat</strong> against Core Data on object insertions, fetching, updates and deletions. 10,000 objects are generated, with no index (only title indexed in Core Data).</p>
 <p><em>Fetching 1,667 Objects</em> evaluated both frameworks on querying by non-indexed property.</p>
 <p><em>Update 10,000 Objects Individually</em> evaluated updating different objects in separate transactions 10,000 times.</p>
@@ -560,6 +625,34 @@
 <p>The ceiling for writes is much higher than what <strong>Dflat</strong> achieved. Again, WCDB represents an ideal case where you have only two columns. <strong>Dflat</strong> numbers in real-world would also be lower than what we had here, because we will have more indexes and objects with many fields, even arrays of data.</p>
 <p>Since <strong>Dflat</strong> doesn't introduce any optimizations for batch operations, it shouldn't be a surprise that <strong>Dflat</strong> performance scales linearly w.r.t. dataset size, as the follow chart will show.</p>
 <p><img alt="" src="../assets/dflat-scaling.png" /></p>
+<h2 id="change-subscription">Change Subscription<a class="headerlink" href="#change-subscription" title="Permanent link">&para;</a></h2>
+<p>Every framework has slightly different design for how changes subscription works. Core Data implements this in two ways: <code>NSFetchedResultsController</code> delegate callbacks, and <code>NSManagedObjectContextObjectsDidChange</code>. From developer's perspective, <code>NSFetchedResultsController</code> can be interpreted as counter-part for <code>FetchedResult</code> subscription on <strong>Dflat</strong> side. Both supports making SQL-like queries and sending updates for the result set. You can build the <strong>Dflat</strong> object subscription mechanism in Core Data based on <code>NSManagedObjectContextObjectsDidChange</code> notification. For the purpose of being objective, I will simply observe the latency for <code>NSManagedObjectContextObjectsDidChange</code> notification when compare these two, assuming the underlying delivery to individual object subscription is a no-op.</p>
+<p>There are three parts of the benchmark:</p>
+<ol>
+<li>
+<p>Subscribe changes to 1,000 fetched results, each observe exactly one object (fetched by the primary key). Subsequent transaction will update 10,000 objects, including these subscribed 1,000 objects. Measuring the latency from when saved, to the time when updates delivered. For Core Data, a child context of viewContext was set up, and the latency was measured before saving the child context, to the time it is delivered. This should be before data persisted (<code>viewContext.save()</code> was called after child context saved). On <strong>Dflat</strong> side, this happens after data persisted.</p>
+</li>
+<li>
+<p>Subscribe changes to 1,000 fetched objects. Subsequent transaction will update 10,000 objects, including these subscribed 1,000 objects. Measuring the latency from when saved, to the time when updates delivered. For Core Data, <code>NSManagedObjectContextObjectsDidChange</code> was subscribed for the <code>viewContext</code> object. It measures the latency from before saving the child context, to the time notification was delivered.</p>
+</li>
+<li>
+<p>Subscribe changes to 1,000 fetched results, each observe around 1,000 objects (fetched by a range query). Subsequent transaction will update 10,000 objects, rotate all objects in each fetched results, while maintaining 1,000 objects per result. The measurement setup on Core Data is the same as 1.</p>
+</li>
+</ol>
+<p><img alt="" src="../assets/dflat-core-data-change.png" /></p>
+<p>The number for both fetched results observation, especially on case 1, represents the most pathological case of them all. It is particularly troublesome for <strong>Dflat</strong> because fetching 1,000 objects from disk individually would take around 20 milliseconds. Thus, if we would take <a href="https://github.com/stephencelis/SQLite.swift">SQLite.swift</a> approach of <em>identifying whcih table changed and simply refetch every query on that table</em>, we could end up more performant. Although for case 3, refetching from disk would definitely be slower (close to 6 seconds for 1,000 queries, each with 1,000 objects).</p>
+<p>From the benchmark, Core Data suffered similar problem, while being worse. Again, this is a extreme case. For mobile apps, you should only have handful of query subscriptions, with probably at most thousands of objects for each query, and unsubscribe changes as you navigate away to other pages. These extreme cases hardly realistic, you are not going to see 35-second stutter from Core Data just because there are 10,000 objects updated and you happen to have 1,000 table views need to be updated. In reality, subscribe to individual queries by primary key seems to be a big no-no. If you want to observe individual object, you should just subscribe individual object as case 2 shows.</p>
+<p>However, it does expose that our message-sorting-and-delivery mechanism not working as efficiently as we expected. Fundamentally, <strong>Dflat</strong>'s change subscription works best with incremental changes, because we evaluate every changed objects against all fetched request subscriptions related to that object. This design avoids trip to the disk on every transaction, but also relies on a reasonable implementation to evaluate every changed objects efficiently.</p>
+<p>A quick test shows that looping over 10,000 objects with 1,000 string equality evaluation in Swift takes about 30 milliseconds. Profile shows majority time was spent on objects retain / release and function calls for Swift runtime. There are two ways to improve:</p>
+<ol>
+<li>
+<p>Current evaluation relies on Swift protocol with associated types. It seems certain Swift usage has higher runtime cost than others. Switching to a better linear scan, either with a interpreted VM or simply optimizing the evaluation procedure, would probably show 5 to 10x improvements.</p>
+</li>
+<li>
+<p>Algorithmically, it can be improved. Current implementation is naive in a way that we evaluate each object against each subscribed query. From the study of database implementation, we know accelerated data structures can be be helpful. Particularly, each <code>FieldExpr</code> in a query can be used to build a sorted set, <code>Comparable</code> queries can be accelerated with these sorted sets.</p>
+</li>
+</ol>
+<p>Both are quite doable, while each has its own challenges. For 1, we need to wrestling with Swift runtime, and its behavior can be erratic at times for obvious gains to be possible. Because I am not intended to delegate parts to C, it makes all harder. For 2, while it is not hard to implement, we use 3-value logic internally (to support <code>isNull</code> / <code>isNotNull</code> queries), that means for every turn, we need to sort with <code>UNKNOWN</code>. Having a robust and correct such implementation means to have much more unit tests to feel comfortable. We also need to balance when to linear scan and when to use accelerated data structures because for small number of changes, linear scan could be faster from previous empirical studies.</p>
                 
               
               

@@ -66,7 +66,7 @@ You can use `dflatc` compiler to manually generate code from flatbuffers schema.
 You can now add the generated source code to your project and then proceed to add **Dflat** runtime with Swift Package Manager:
 
 ```swift
-.package(name: "Dflat", url: "https://github.com/liuliu/dflat.git", from: "0.2.0")
+.package(name: "Dflat", url: "https://github.com/liuliu/dflat.git", from: "0.3.0")
 ```
 
 ## Example

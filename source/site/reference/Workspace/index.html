@@ -583,7 +583,9 @@
 Transactions initiated before this will finish normally. Data fetching after this
 will return empty results. Any data fetching triggered before this call will finish
 normally, hence the <code>completion</code> part. The <code>completion</code> closure, if supplied, will
-be called once all transactions and data fetching initiated before shutdown finish.</p>
+be called once all transactions and data fetching initiated before shutdown finish.
+If <code>completion</code> closure not provided, this call will wait until all finished before
+return.</p>
 <h3 id="performchanges_changeshandlercompletionhandler"><code>performChanges(_:changesHandler:completionHandler:)</code><a class="headerlink" href="#performchanges_changeshandlercompletionhandler" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span><span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span><span class="p">,</span> <span class="n">completionHandler</span><span class="p">:</span> <span class="n">CompletionHandler</span><span class="p">?)</span>
 </code></pre></div>

@@ -235,6 +235,26 @@
     Installation
   </a>
   
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-with-bazel" class="md-nav__link">
+    Install with Bazel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-with-swift-package-manager" class="md-nav__link">
+    Install with Swift Package Manager
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -497,6 +517,26 @@
     Installation
   </a>
   
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-with-bazel" class="md-nav__link">
+    Install with Bazel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-with-swift-package-manager" class="md-nav__link">
+    Install with Swift Package Manager
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -535,11 +575,47 @@
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p><strong>Dflat</strong> at the moment requires <a href="https://github.com/bazelbuild/bazel">Bazel</a>. To be more precise, <strong>Dflat</strong> runtime can be installed with either <a href="https://swift.org/package-manager/">Swift Package Manager</a> or Bazel. But the <code>dflatc</code> compiler requires Bazel to build relevant parts.</p>
 <p>You can install Bazel on macOS following <a href="https://docs.bazel.build/versions/3.3.0/install-os-x.html">this guide</a>.</p>
-<p>After that, you can use <code>dflatc</code> compiler with</p>
+<h3 id="install-with-bazel">Install with Bazel<a class="headerlink" href="#install-with-bazel" title="Permanent link">&para;</a></h3>
+<p>If your project is already managed by Bazel, <strong>Dflat</strong> provides fully-integrated tools from code generation to library dependency management. Simply add <strong>Dflat</strong> to your <code>WORKSPACE</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">git_repository</span><span class="p">(</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;dflat&quot;</span><span class="p">,</span>
+  <span class="n">remote</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/liuliu/dflat.git&quot;</span><span class="p">,</span>
+  <span class="n">commit</span> <span class="o">=</span> <span class="s2">&quot;88aec220642bb5e416074bc8b8a4e5c8b86a61c2&quot;</span><span class="p">,</span>
+  <span class="n">shallow_since</span> <span class="o">=</span> <span class="s2">&quot;1604112303 -0400&quot;</span>
+<span class="p">)</span>
+
+<span class="n">load</span><span class="p">(</span><span class="s2">&quot;@dflat//:deps.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;dflat_deps&quot;</span><span class="p">)</span>
+
+<span class="n">dflat_deps</span><span class="p">()</span>
+</code></pre></div>
+
+<p>For your <code>swift_library</code>, you can now add a new schema like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@dflat//:dflat.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;dflatc&quot;</span><span class="p">)</span>
+
+<span class="n">dflatc</span><span class="p">(</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;post_schema&quot;</span><span class="p">,</span>
+  <span class="n">src</span> <span class="o">=</span> <span class="s2">&quot;post.fbs&quot;</span>
+<span class="p">)</span>
+
+<span class="n">swift_library</span><span class="p">(</span>
+  <span class="o">...</span>
+  <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;:post_schema&quot;</span>
+  <span class="p">],</span>
+  <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;@dflat//:SQLiteDflat&quot;</span>
+  <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<h3 id="install-with-swift-package-manager">Install with Swift Package Manager<a class="headerlink" href="#install-with-swift-package-manager" title="Permanent link">&para;</a></h3>
+<p>You can use <code>dflatc</code> compiler to manually generate code from flatbuffers schema.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">./dflatc.py --help</span>
 </code></pre></div>
 
-<p>You can then proceed to add <strong>Dflat</strong> runtime either with Swift Package Manager or Bazel. With Swift Package Manager:</p>
+<p>You can now add the generated source code to your project and then proceed to add <strong>Dflat</strong> runtime with Swift Package Manager:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">.</span><span class="n">package</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;Dflat&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="s">&quot;https://github.com/liuliu/dflat.git&quot;</span><span class="p">,</span> <span class="n">from</span><span class="p">:</span> <span class="s">&quot;0.2.0&quot;</span><span class="p">)</span>
 </code></pre></div>
 
@@ -575,8 +651,15 @@
 <span class="n">root_type</span><span class="w"> </span><span class="n">Post</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">important</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">says</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Post</span><span class="w"> </span><span class="k">object</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">Dflat</span><span class="w"> </span><span class="n">manages</span><span class="p">.</span><span class="w"></span>
 </code></pre></div>
 
-<p>You can then use <code>dflatc</code> compiler to generate code from the schema:</p>
+<p>You can then ether use <code>dflatc</code> compiler to manually generate code from the schema:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">./dflatc.py -o ../PostExample ../PostExample/post.fbs</span>
+</code></pre></div>
+
+<p>Or use <code>dflatc</code> rule from Bazel:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">dflatc</span><span class="p">(</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;post_schema&quot;</span><span class="p">,</span>
+  <span class="n">src</span> <span class="o">=</span> <span class="s2">&quot;post.fbs&quot;</span>
+<span class="p">)</span>
 </code></pre></div>
 
 <p>If everything checks out, you should see 4 files generated in <code>../PostExample</code> directory: <code>post_generated.swift</code>, <code>post_data_model_generated.swift</code>, <code>post_mutating_generated.swift</code>, <code>post_query_generated.swift</code>. Adding them to your project.</p>

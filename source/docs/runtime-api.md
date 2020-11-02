@@ -70,4 +70,5 @@ These are the **Combine** counter-parts. Besides subscribing to objects or `fetc
 func Workspace.shutdown(completion: (() -> Void)? = nil)
 ```
 
-This will trigger the **Dflat** shutdown. All transactions made to **Dflat** after this call will fail. Transactions initiated before this will finish normally. Data fetching after this will return empty results. Any data fetching triggered before this call will finish normally, hence the `completion` part. The `completion` closure, if supplied, will be called once all transactions and data fetching initiated before `shutdown` finish.
+This will trigger the **Dflat** shutdown. All transactions made to **Dflat** after this call will fail. Transactions initiated before this will finish normally. Data fetching after this will return empty results. Any data fetching triggered before this call will finish normally, hence the `completion` part. The `completion` closure, if supplied, will be called once all transactions and data fetching initiated before `shutdown` finish. If `completion` closure not provided, this call will wait until all finished before
+return.

@@ -661,7 +661,8 @@
 <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">Workspace</span><span class="p">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)?</span> <span class="p">=</span> <span class="kc">nil</span><span class="p">)</span>
 </code></pre></div>
 
-<p>This will trigger the <strong>Dflat</strong> shutdown. All transactions made to <strong>Dflat</strong> after this call will fail. Transactions initiated before this will finish normally. Data fetching after this will return empty results. Any data fetching triggered before this call will finish normally, hence the <code>completion</code> part. The <code>completion</code> closure, if supplied, will be called once all transactions and data fetching initiated before <code>shutdown</code> finish.</p>
+<p>This will trigger the <strong>Dflat</strong> shutdown. All transactions made to <strong>Dflat</strong> after this call will fail. Transactions initiated before this will finish normally. Data fetching after this will return empty results. Any data fetching triggered before this call will finish normally, hence the <code>completion</code> part. The <code>completion</code> closure, if supplied, will be called once all transactions and data fetching initiated before <code>shutdown</code> finish. If <code>completion</code> closure not provided, this call will wait until all finished before
+return.</p>
                 
               
               

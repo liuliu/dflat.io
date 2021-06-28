@@ -39,7 +39,7 @@ load("@dflat//:dflat.bzl", "dflatc")
 
 dflatc(
   name = "post_schema",
-  src = "post.fbs"
+  srcs = ["post.fbs"]
 )
 
 swift_library(
@@ -115,7 +115,7 @@ Or use `dflatc` rule from Bazel:
 ```python
 dflatc(
   name = "post_schema",
-  src = "post.fbs"
+  srcs = ["post.fbs"]
 )
 ```
 

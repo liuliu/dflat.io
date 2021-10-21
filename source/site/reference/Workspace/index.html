@@ -704,6 +704,17 @@ return.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="performchanges_changeshandler"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler" title="Permanent link">&para;</a></h3>
+<p>Perform a transaction for given object types and await either success or failure boolean.</p>
+<ul>
+<li>Parameters:<ul>
+<li>transactionalObjectTypes: A list of object types you are going to transact with. If you
+                            If you fetch or mutation an object outside of this list, it will fatal.</li>
+<li>changesHandler: The transaction closure where you will give a transactionContext and safe to do
+                  data mutations through submission of change requests.</li>
+</ul>
+</li>
+</ul>
 <h3 id="subscribefetchedresultchangehandler"><code>subscribe(fetchedResult:changeHandler:)</code><a class="headerlink" href="#subscribefetchedresultchangehandler" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span>
   <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span>
@@ -810,12 +821,28 @@ return.</p>
 </code></pre></div>
 
 <p>Return a publisher builder for query subscription in Combine.</p>
+<p><strong>EXTENSION</strong></p>
+<h1 id="workspace_1"><code>Workspace</code><a class="headerlink" href="#workspace_1" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Workspace</span>
+</code></pre></div>
+
+<h2 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h2>
+<h3 id="shutdown"><code>shutdown()</code><a class="headerlink" href="#shutdown" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">shutdown</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="performchanges_changeshandler_1"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span>
+  <span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span>
+<span class="p">)</span>
+</code></pre></div>
+
 <p><strong>CLASS</strong></p>
 <h1 id="querybuilder"><code>QueryBuilder</code><a class="headerlink" href="#querybuilder" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">class</span> <span class="nc">QueryBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<h2 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h2>
+<h2 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h2>
 <h3 id="init"><code>init()</code><a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">init</span><span class="p">()</span>
 </code></pre></div>
@@ -904,7 +931,7 @@ return.</p>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="nc">WorkspaceSubscription</span>
 </code></pre></div>
 
-<h2 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h2>
+<h2 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h2>
 <h3 id="cancel"><code>cancel()</code><a class="headerlink" href="#cancel" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">cancel</span><span class="p">()</span>
 </code></pre></div>
@@ -932,7 +959,7 @@ immediately after <code>cancel</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">class</span> <span class="nc">QueryPublisherBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
 </code></pre></div>
 
-<h2 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h2>
+<h2 id="methods_6">Methods<a class="headerlink" href="#methods_6" title="Permanent link">&para;</a></h2>
 <h3 id="init_1"><code>init()</code><a class="headerlink" href="#init_1" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">init</span><span class="p">()</span>
 </code></pre></div>

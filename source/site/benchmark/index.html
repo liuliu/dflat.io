@@ -493,18 +493,12 @@
     Change Subscription
   </a>
   
-    <nav class="md-nav" aria-label="Change Subscription">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-value-container-workspacedictionary" class="md-nav__link">
     Key-Value Container, WorkspaceDictionary
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -568,18 +562,12 @@
     Change Subscription
   </a>
   
-    <nav class="md-nav" aria-label="Change Subscription">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-value-container-workspacedictionary" class="md-nav__link">
     Key-Value Container, WorkspaceDictionary
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -650,7 +638,7 @@
 </li>
 </ol>
 <p>Both are quite doable, while each has its own challenges. For 1, we need to wrestling with Swift runtime, and its behavior can be erratic at times for obvious gains to be possible. Because I am not intended to delegate parts to C, it makes all harder. For 2, while it is not hard to implement, we use 3-value logic internally (to support <code>isNull</code> / <code>isNotNull</code> queries), that means for every turn, we need to sort with <code>UNKNOWN</code>. Having a robust and correct such implementation means to have much more unit tests to feel comfortable. We also need to balance when to linear scan and when to use accelerated data structures because for small number of changes, linear scan could be faster from previous empirical studies.</p>
-<h3 id="key-value-container-workspacedictionary">Key-Value Container, WorkspaceDictionary<a class="headerlink" href="#key-value-container-workspacedictionary" title="Permanent link">&para;</a></h3>
+<h2 id="key-value-container-workspacedictionary">Key-Value Container, WorkspaceDictionary<a class="headerlink" href="#key-value-container-workspacedictionary" title="Permanent link">&para;</a></h2>
 <p>New data collected to compare <strong>Dflat</strong>'s <code>WorkspaceDictionay</code> against <code>UserDefaults</code> as a convenient persisted key-value container on iOS. As a reminder, raw performance rarely is a consideration for persisted key-value containers on mobile apps. The data provided here are helpful for us to understand the characteristics in designing <strong>Dflat</strong>'s <code>WorkspaceDictionary</code>.</p>
 <p>The new data were collected from a iPhone 13 Pro with 128GiB storage. Compilation parameters were the same as the other benchmarks.</p>
 <p><img alt="" src="../assets/dflat-vs-userdefaults.png" /></p>
@@ -663,7 +651,7 @@
 <p><img alt="" src="../assets/dflat-shards.png" /></p>
 <p>Comparing no shard (using a lock to protect the in-memory dictionary) with 12-way shards (by key hash value, only lock one of the 12 dictionaries), in simpler cases such as insert integers, fewer lock-contention is beneficial. When there is a lock-contention, such as <em>Update 1 Key with 40,000 Int</em>, as expected, the difference is minimal.</p>
 <p>There is a bigger difference with <code>Codable</code>, it is unfortunate. When set, we only release lock when the object is encoded. There is a complex reason for that (we only update when compared old value with the new, and the old value is fetched with the lock. Thus, our current sequence is: update in-memory dictionary with new value and get old value -&gt; if old value != new value -&gt; encode object -&gt; dispatch to persist in background thread. We need to protect the whole in-memory dictionary update til dispatch to persist, otherwise we may end up with in-memory dictionary of one value but on disk, it is another. Alternative is to move the encode object part before updating in-memory dictionary. That missed the opportunity to skip the encoding entirely if old == new). The difference you saw is when we can do encoding in parallel v.s. we have to serialize it.</p>
-<p>The above comparison raises question about when to use <code>WorkspaceDictionary</code>. The answer is not easy. If you are using <strong>Dflat</strong> already, <code>WorkspaceDictionary</code> is an easy way to persist some one off data with the same guarantee <strong>Dflat</strong> has, you don't need to deal with OS differences with <code>UserDefaults</code>, or worry about the size limitations. It will be more beneficial with <strong>Dflat</strong> when I introduce transactional guarantee later this year.</p>
+<p>The above comparison raises question about when to use <code>WorkspaceDictionary</code>. The answer is not easy. If you are using <strong>Dflat</strong> already, <code>WorkspaceDictionary</code> is an easy way to persist some one off data with the same guarantee <strong>Dflat</strong> has. You don't need to deal with OS differences with <code>UserDefaults</code>, or worry about the size limitations. It will be more beneficial with <strong>Dflat</strong> when I introduce transactional guarantee later this year.</p>
                 
               
               

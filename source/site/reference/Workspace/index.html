@@ -637,6 +637,14 @@ threads. You could have one thread called synchronize while another thread
 is still holding their own lock to update in-memory value. It doesn't guarantee
 the first thread will wait the second thread's dictionary[key] = value to finish.
 This method only guarantees all writes on current thread done.</p>
+<h3 id="removeall"><code>removeAll()</code><a class="headerlink" href="#removeall" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">removeAll</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Remove all key-value pairs in the dictionary. Like <code>keys</code>, this is an expensive method
+in the sense that it needs to acquire locks for all in-memory structures. But it is not
+as expensive as <code>keys</code> because the deletion from disk is asynchronous (no need to wait
+fetching from disk).</p>
 <p><strong>PROTOCOL</strong></p>
 <h1 id="workspace"><code>Workspace</code><a class="headerlink" href="#workspace" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="nc">Workspace</span><span class="p">:</span> <span class="n">Queryable</span>

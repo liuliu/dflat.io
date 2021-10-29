@@ -625,7 +625,10 @@
 </code></pre></div>
 
 <p>Return all keys available in the dictionary. This is an expensive (for this dictionary)
-method as it fetches from disk, from in-memory structures, and acquire locks if needed.</p>
+ method as it fetches from disk, from in-memory structures, and acquire locks if needed.</p>
+<ul>
+<li>Returns: List of all keys available at the point of time in persisted dictionary.</li>
+</ul>
 <h2 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h2>
 <h3 id="synchronize"><code>synchronize()</code><a class="headerlink" href="#synchronize" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">synchronize</span><span class="p">()</span>
@@ -713,6 +716,11 @@ return.</p>
 </tbody>
 </table>
 <h3 id="performchanges_changeshandler"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span>
+  <span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span>
+<span class="p">)</span> <span class="n">async</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
+</code></pre></div>
+
 <p>Perform a transaction for given object types and await either success or failure boolean.</p>
 <ul>
 <li>Parameters:<ul>
@@ -724,10 +732,10 @@ return.</p>
 </li>
 </ul>
 <h3 id="subscribefetchedresultchangehandler"><code>subscribe(fetchedResult:changeHandler:)</code><a class="headerlink" href="#subscribefetchedresultchangehandler" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
   <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span>
   <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span>
-<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Subscription</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Subscription</span>
 </code></pre></div>
 
 <p>Subscribe to changes of a fetched result. You queries fetched result with
@@ -768,9 +776,9 @@ return.</p>
 </tbody>
 </table>
 <h3 id="subscribeobjectchangehandler"><code>subscribe(object:changeHandler:)</code><a class="headerlink" href="#subscribeobjectchangehandler" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
   <span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">SubscribedObject</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span>
-<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Subscription</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Subscription</span>
 </code></pre></div>
 
 <p>Subscribe to changes of an object. If anything in the object changed or
@@ -813,22 +821,60 @@ return.</p>
 </tbody>
 </table>
 <h3 id="publisherfor"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AtomPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AtomPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <p>Return a publisher for object subscription in Combine.</p>
 <h3 id="publisherfor_1"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor_1" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">FetchedResultPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
-<span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span>
+  <span class="p">-&gt;</span> <span class="n">FetchedResultPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <p>Return a publisher for fetched result subscription in Combine.</p>
 <h3 id="publisherfor_2"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor_2" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryPublisherBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
-<span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryPublisherBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <p>Return a publisher builder for query subscription in Combine.</p>
+<h3 id="subscribeobjectbufferingpolicy"><code>subscribe(object:bufferingPolicy:)</code><a class="headerlink" href="#subscribeobjectbufferingpolicy" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
+  <span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">bufferingPolicy</span><span class="p">:</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;.</span><span class="n">Continuation</span><span class="p">.</span><span class="n">BufferingPolicy</span>
+<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Subscribe to changes to the said object, and return the AsyncSequence you can iterate over.</p>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>object: The object previously fetched that we want to observe the new updates.</li>
+<li>bufferingPolicy: The buffering policy to avoid issuing all updates to concerned parties. Default will be the newest of 1.</li>
+</ul>
+</li>
+<li>
+<p>Returns: An AsyncSequence that can await for new object updates. Finishes only if the object deletes.</p>
+</li>
+</ul>
+<h3 id="subscribefetchedresultbufferingpolicy"><code>subscribe(fetchedResult:bufferingPolicy:)</code><a class="headerlink" href="#subscribefetchedresultbufferingpolicy" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
+  <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span>
+  <span class="n">bufferingPolicy</span><span class="p">:</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Continuation</span><span class="p">.</span><span class="n">BufferingPolicy</span>
+<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<p>Subscribe to changes to the said fetched result, and return the AsyncSequence you can iterate over.</p>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>fetchedResult: The result fetched that we want to observe the new updates.</li>
+<li>bufferingPolicy: The buffering policy to avoid issuing all updates to concerned parties. Default will be the newest of 1.</li>
+</ul>
+</li>
+<li>
+<p>Returns: An AsyncSequence that can await for new fetched result. It never finishes.</p>
+</li>
+</ul>
 <p><strong>EXTENSION</strong></p>
 <h1 id="workspace_1"><code>Workspace</code><a class="headerlink" href="#workspace_1" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Workspace</span>
@@ -843,6 +889,15 @@ return.</p>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span>
   <span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span>
 <span class="p">)</span>
+</code></pre></div>
+
+<h3 id="subscribeobject"><code>subscribe(object:)</code><a class="headerlink" href="#subscribeobject" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3 id="subscribefetchedresult"><code>subscribe(fetchedResult:)</code><a class="headerlink" href="#subscribefetchedresult" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span>
+  <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <p><strong>CLASS</strong></p>
@@ -964,7 +1019,7 @@ immediately after <code>cancel</code>.</p>
 <p>The object is deleted. This denotes the end of a subscription.</p>
 <p><strong>CLASS</strong></p>
 <h1 id="querypublisherbuilder"><code>QueryPublisherBuilder</code><a class="headerlink" href="#querypublisherbuilder" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">class</span> <span class="nc">QueryPublisherBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">class</span> <span class="nc">QueryPublisherBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <h2 id="methods_6">Methods<a class="headerlink" href="#methods_6" title="Permanent link">&para;</a></h2>

@@ -496,6 +496,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#subscribeobjectbufferingpolicy" class="md-nav__link">
+    subscribe(object:bufferingPolicy:)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribefetchedresultbufferingpolicy" class="md-nav__link">
+    subscribe(fetchedResult:bufferingPolicy:)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -850,6 +864,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#subscribeobjectbufferingpolicy" class="md-nav__link">
+    subscribe(object:bufferingPolicy:)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribefetchedresultbufferingpolicy" class="md-nav__link">
+    subscribe(fetchedResult:bufferingPolicy:)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -964,6 +992,11 @@
 </tbody>
 </table>
 <h3 id="performchanges_changeshandler"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span>
+  <span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span>
+<span class="p">)</span> <span class="n">async</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
+</code></pre></div>
+
 <p>Perform a transaction for given object types and await either success or failure boolean.</p>
 <ul>
 <li>Parameters:<ul>
@@ -983,10 +1016,10 @@
 </code></pre></div>
 
 <h3 id="subscribefetchedresultchangehandler"><code>subscribe(fetchedResult:changeHandler:)</code><a class="headerlink" href="#subscribefetchedresultchangehandler" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
   <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span>
   <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span>
-<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Workspace</span><span class="p">.</span><span class="n">Subscription</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Workspace</span><span class="p">.</span><span class="n">Subscription</span>
 </code></pre></div>
 
 <h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
@@ -1009,9 +1042,9 @@
 </tbody>
 </table>
 <h3 id="subscribeobjectchangehandler"><code>subscribe(object:changeHandler:)</code><a class="headerlink" href="#subscribeobjectchangehandler" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
   <span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">changeHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="kc">_</span><span class="p">:</span> <span class="n">SubscribedObject</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Void</span>
-<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Workspace</span><span class="p">.</span><span class="n">Subscription</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Workspace</span><span class="p">.</span><span class="n">Subscription</span>
 </code></pre></div>
 
 <h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
@@ -1034,18 +1067,31 @@
 </tbody>
 </table>
 <h3 id="publisherfor"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span> <span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AtomPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
-<span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span> <span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AtomPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <h3 id="publisherfor_1"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor_1" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span> <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span>
-  <span class="p">-&gt;</span> <span class="n">FetchedResultPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span> <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;)</span>
+  <span class="p">-&gt;</span> <span class="n">FetchedResultPublisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
 
 <h3 id="publisherfor_2"><code>publisher(for:)</code><a class="headerlink" href="#publisherfor_2" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryPublisherBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
-<span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">publisher</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="k">for</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryPublisherBuilder</span><span class="o">&lt;</span>
+  <span class="n">Element</span>
+<span class="o">&gt;</span>
+</code></pre></div>
+
+<h3 id="subscribeobjectbufferingpolicy"><code>subscribe(object:bufferingPolicy:)</code><a class="headerlink" href="#subscribeobjectbufferingpolicy" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
+  <span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">bufferingPolicy</span><span class="p">:</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;.</span><span class="n">Continuation</span><span class="p">.</span><span class="n">BufferingPolicy</span>
+<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3 id="subscribefetchedresultbufferingpolicy"><code>subscribe(fetchedResult:bufferingPolicy:)</code><a class="headerlink" href="#subscribefetchedresultbufferingpolicy" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
+  <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span>
+  <span class="n">bufferingPolicy</span><span class="p">:</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Continuation</span><span class="p">.</span><span class="n">BufferingPolicy</span>
+<span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <p><strong>ENUM</strong></p>

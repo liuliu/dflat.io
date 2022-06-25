@@ -715,22 +715,6 @@ return.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="performchanges_changeshandler"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span>
-  <span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span>
-<span class="p">)</span> <span class="n">async</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
-</code></pre></div>
-
-<p>Perform a transaction for given object types and await either success or failure boolean.</p>
-<ul>
-<li>Parameters:<ul>
-<li>transactionalObjectTypes: A list of object types you are going to transact with. If you
-                            If you fetch or mutation an object outside of this list, it will fatal.</li>
-<li>changesHandler: The transaction closure where you will give a transactionContext and safe to do
-                  data mutations through submission of change requests.</li>
-</ul>
-</li>
-</ul>
 <h3 id="subscribefetchedresultchangehandler"><code>subscribe(fetchedResult:changeHandler:)</code><a class="headerlink" href="#subscribefetchedresultchangehandler" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
   <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span>
@@ -855,6 +839,25 @@ return.</p>
 <p>Returns: An AsyncSequence that can await for new object updates. Finishes only if the object deletes.</p>
 </li>
 </ul>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>The object previously fetched that we want to observe the new updates.</td>
+</tr>
+<tr>
+<td>bufferingPolicy</td>
+<td>The buffering policy to avoid issuing all updates to concerned parties. Default will be the newest of 1.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="subscribefetchedresultbufferingpolicy"><code>subscribe(fetchedResult:bufferingPolicy:)</code><a class="headerlink" href="#subscribefetchedresultbufferingpolicy" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
   <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span>
@@ -875,6 +878,25 @@ return.</p>
 <p>Returns: An AsyncSequence that can await for new fetched result. It never finishes.</p>
 </li>
 </ul>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fetchedResult</td>
+<td>The result fetched that we want to observe the new updates.</td>
+</tr>
+<tr>
+<td>bufferingPolicy</td>
+<td>The buffering policy to avoid issuing all updates to concerned parties. Default will be the newest of 1.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>EXTENSION</strong></p>
 <h1 id="workspace_1"><code>Workspace</code><a class="headerlink" href="#workspace_1" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Workspace</span>
@@ -885,12 +907,51 @@ return.</p>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">shutdown</span><span class="p">()</span>
 </code></pre></div>
 
-<h3 id="performchanges_changeshandler_1"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler_1" title="Permanent link">&para;</a></h3>
+<h3 id="performchanges_changeshandler"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span>
   <span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span>
 <span class="p">)</span>
 </code></pre></div>
 
+<h3 id="shutdown_1"><code>shutdown()</code><a class="headerlink" href="#shutdown_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">shutdown</span><span class="p">()</span> <span class="n">async</span>
+</code></pre></div>
+
+<h3 id="performchanges_changeshandler_1"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span>
+  <span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span>
+<span class="p">)</span> <span class="n">async</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
+</code></pre></div>
+
+<p>Perform a transaction for given object types and await either success or failure boolean.</p>
+<ul>
+<li>Parameters:<ul>
+<li>transactionalObjectTypes: A list of object types you are going to transact with. If you
+                            If you fetch or mutation an object outside of this list, it will fatal.</li>
+<li>changesHandler: The transaction closure where you will give a transactionContext and safe to do
+                  data mutations through submission of change requests.</li>
+</ul>
+</li>
+</ul>
+<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transactionalObjectTypes</td>
+<td>A list of object types you are going to transact with. If you If you fetch or mutation an object outside of this list, it will fatal.</td>
+</tr>
+<tr>
+<td>changesHandler</td>
+<td>The transaction closure where you will give a transactionContext and safe to do data mutations through submission of change requests.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="subscribeobject"><code>subscribe(object:)</code><a class="headerlink" href="#subscribeobject" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="n">object</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -930,7 +991,7 @@ return.</p>
 <p>Returns: Return a fetched result which interacts just like normal array.</p>
 </li>
 </ul>
-<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -970,7 +1031,7 @@ return.</p>
 <p>Returns: Return a fetched result which interacts just like normal array.</p>
 </li>
 </ul>
-<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<h4 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -1048,6 +1109,29 @@ immediately after <code>cancel</code>.</p>
 <p>Returns: A publisher object that can be interacted with Combine.</p>
 </li>
 </ul>
+<h4 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>The query such as <code>Post.title == "some title" &amp;&amp; Post.color == .red</code></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>The array of keys to order the result. Such as <code>[Post.priority.descending]</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="alllimitorderby_1"><code>all(limit:orderBy:)</code><a class="headerlink" href="#alllimitorderby_1" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">all</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span> <span class="n">Limit</span> <span class="p">=</span> <span class="p">.</span><span class="n">noLimit</span><span class="p">,</span> <span class="n">orderBy</span><span class="p">:</span> <span class="p">[</span><span class="n">OrderBy</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;]</span> <span class="p">=</span> <span class="p">[])</span> <span class="p">-&gt;</span> <span class="n">QueryPublisher</span><span class="o">&lt;</span>
   <span class="n">Element</span>
@@ -1068,6 +1152,25 @@ immediately after <code>cancel</code>.</p>
 <p>Returns: A publisher object that can be interacted with Combine.</p>
 </li>
 </ul>
+<h4 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limit</td>
+<td>The limit. Default to <code>.noLimit</code>, you can supply <code>.limit(number)</code></td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>The array of keys to order the result. Such as <code>[Post.priority.descending]</code></td>
+</tr>
+</tbody>
+</table>
                 
               
               

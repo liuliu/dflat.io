@@ -415,13 +415,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#performchanges_changeshandler" class="md-nav__link">
-    performChanges(_:changesHandler:)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#fetchfor" class="md-nav__link">
     fetch(for:)
   </a>
@@ -501,12 +494,38 @@
     subscribe(object:bufferingPolicy:)
   </a>
   
+    <nav class="md-nav" aria-label="subscribe(object:bufferingPolicy:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#subscribefetchedresultbufferingpolicy" class="md-nav__link">
     subscribe(fetchedResult:bufferingPolicy:)
   </a>
+  
+    <nav class="md-nav" aria-label="subscribe(fetchedResult:bufferingPolicy:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -783,13 +802,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#performchanges_changeshandler" class="md-nav__link">
-    performChanges(_:changesHandler:)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#fetchfor" class="md-nav__link">
     fetch(for:)
   </a>
@@ -869,12 +881,38 @@
     subscribe(object:bufferingPolicy:)
   </a>
   
+    <nav class="md-nav" aria-label="subscribe(object:bufferingPolicy:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#subscribefetchedresultbufferingpolicy" class="md-nav__link">
     subscribe(fetchedResult:bufferingPolicy:)
   </a>
+  
+    <nav class="md-nav" aria-label="subscribe(fetchedResult:bufferingPolicy:)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -991,22 +1029,6 @@
 </tr>
 </tbody>
 </table>
-<h3 id="performchanges_changeshandler"><code>performChanges(_:changesHandler:)</code><a class="headerlink" href="#performchanges_changeshandler" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">performChanges</span><span class="p">(</span>
-  <span class="kc">_</span> <span class="n">transactionalObjectTypes</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">.</span><span class="kr">Type</span><span class="p">],</span> <span class="n">changesHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="n">ChangesHandler</span>
-<span class="p">)</span> <span class="n">async</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
-</code></pre></div>
-
-<p>Perform a transaction for given object types and await either success or failure boolean.</p>
-<ul>
-<li>Parameters:<ul>
-<li>transactionalObjectTypes: A list of object types you are going to transact with. If you
-                            If you fetch or mutation an object outside of this list, it will fatal.</li>
-<li>changesHandler: The transaction closure where you will give a transactionContext and safe to do
-                  data mutations through submission of change requests.</li>
-</ul>
-</li>
-</ul>
 <h3 id="fetchfor"><code>fetch(for:)</code><a class="headerlink" href="#fetchfor" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fetch</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span><span class="p">&gt;(</span><span class="k">for</span> <span class="n">ofType</span><span class="p">:</span> <span class="n">Element</span><span class="p">.</span><span class="kr">Type</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">QueryBuilder</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -1087,6 +1109,25 @@
 <span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span>
 </code></pre></div>
 
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>The object previously fetched that we want to observe the new updates.</td>
+</tr>
+<tr>
+<td>bufferingPolicy</td>
+<td>The buffering policy to avoid issuing all updates to concerned parties. Default will be the newest of 1.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="subscribefetchedresultbufferingpolicy"><code>subscribe(fetchedResult:bufferingPolicy:)</code><a class="headerlink" href="#subscribefetchedresultbufferingpolicy" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">:</span> <span class="n">Atom</span> <span class="o">&amp;</span> <span class="nb">Equatable</span><span class="p">&gt;(</span>
   <span class="n">fetchedResult</span><span class="p">:</span> <span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;,</span>
@@ -1094,6 +1135,25 @@
 <span class="p">)</span> <span class="p">-&gt;</span> <span class="n">AsyncStream</span><span class="p">&lt;</span><span class="n">FetchedResult</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span><span class="o">&gt;</span>
 </code></pre></div>
 
+<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fetchedResult</td>
+<td>The result fetched that we want to observe the new updates.</td>
+</tr>
+<tr>
+<td>bufferingPolicy</td>
+<td>The buffering policy to avoid issuing all updates to concerned parties. Default will be the newest of 1.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>ENUM</strong></p>
 <h1 id="sqliteworkspacefileprotectionlevel"><code>SQLiteWorkspace.FileProtectionLevel</code><a class="headerlink" href="#sqliteworkspacefileprotectionlevel" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">FileProtectionLevel</span><span class="p">:</span> <span class="nb">Int32</span>
